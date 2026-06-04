@@ -27,7 +27,7 @@ custom_fields:
   name: About This Plugin
   field_type: author_bio
   category: programming,humor
-  description: Because a 502 Bad Gateway hurts slightly less when it's delivered by a confused duck.
+  description: "Created by Ivan Perez. This plugins displays a cute duck, cat, dog, goat or even a fish when you need it the most."
   github_url: https://github.com/taichikuji/trmnl-http-pets-plugin
   learn_more_url: https://httpducks.com/
 name: HTTP Pets
