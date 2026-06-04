@@ -1,0 +1,14 @@
+# TRMNLP configuration
+# The plugin setting ID used by the publish workflow (.github/workflows/publish-trmnl.yml)
+# is the integer found in the URL when editing your plugin on trmnl.com: /plugin_settings/<ID>/edit
+---
+# auto-reload when files change
+watch:
+  - src
+  - .trmnlp.yml
+
+# override variables for development
+variables:
+  trmnl:
+    user:
+      utc_offset: 3600  # mock UTC+1; change to match your local offset for timezone testing

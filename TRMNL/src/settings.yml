@@ -1,0 +1,34 @@
+---
+strategy: static
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: "{}"
+polling_verb: get
+framework_version: 3.1.1
+serverless_language: node
+polling_url: ''
+polling_headers: ''
+polling_body: ''
+id: 323180
+custom_fields:
+- keyname: pet_type
+  name: Choose your HTTP Pet
+  field_type: select
+  options:
+  - all
+  - cats
+  - httpcats
+  - dogs
+  - goats
+  - ducks
+  - fish
+  default: all
+- keyname: plugin_info
+  name: About This Plugin
+  field_type: author_bio
+  category: programming,humor
+  description: Because a 502 Bad Gateway hurts slightly less when it's delivered by a confused duck.
+  github_url: https://github.com/taichikuji/trmnl-http-pets
+  learn_more_url: https://httpcats.com/
+name: HTTP Pets
+refresh_interval: 15

@@ -1,0 +1,14 @@
+{% template title_bar %}
+<div class="title_bar">
+  <img
+    class="image-stroke image-stroke--large"
+    src="{{ favicon }}"
+    width="28"
+    height="28"
+    alt="HTTP Pets logo" />
+  <span class="title">{{ title | default: 'HTTP Pets' }}</span>
+  <span class="instance">
+    <strong>{{ status }}</strong>: {{ instance }}
+  </span>
+</div>
+{% endtemplate %}

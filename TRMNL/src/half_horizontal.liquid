@@ -1,0 +1,11 @@
+<div class="layout layout--row gap bg--black">               
+  <img class="image image-dither image--contain" height="100%" width="100%" src="{{ image_url }}" alt="HTTP {{ code }}">
+</div>
+
+{% render 'title_bar'
+, favicon: favicon 
+, title: plugin_name
+, instance: title
+, status: code
+%}
+
