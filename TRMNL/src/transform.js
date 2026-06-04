@@ -1,8 +1,8 @@
 function run(input) {
-  // 1. Extraemos la opción en una sola línea súper limpia
+  // Extract the pet type option with a fallback to 'all'
   const petType = String(input?.trmnl?.plugin_settings?.custom_fields_values?.pet_type || input?.pet_type || 'all').trim().toLowerCase();
 
-  // 2. Diccionario con todas las APIs soportadas
+  // Dictionary of all supported APIs
   const petConfigs = {
     cats:     { name: 'HTTP Cats',        baseUrl: 'https://httpcats.com/',    favicon: 'https://httpcats.com/favicon.ico' },
     httpcats: { name: 'HTTP Cats',        baseUrl: 'https://http.cat/',        favicon: 'https://http.cat/favicon.ico' },
@@ -12,18 +12,17 @@ function run(input) {
     fish:     { name: 'HTTP Fish',        baseUrl: 'https://http.fish/',       favicon: 'https://http.fish/favicon.ico' }
   };
 
-  // 3. Lógica del modo "All"
+  // "All" mode logic: pick a random API
   let activeKey = petType;
   if (activeKey === 'all') {
-    // Sacamos una lista con los nombres ['cats', 'httpcats', 'dogs', ...] y elegimos uno al azar
     const keys = Object.keys(petConfigs);
     activeKey = keys[Math.floor(Math.random() * keys.length)];
   }
 
-  // Fallback seguro por si entra algún valor raro
+  // Safe fallback for invalid values
   const activePet = petConfigs[activeKey] || petConfigs.cats;
 
-  // 4. Los 77 códigos de estado universales garantizados en todas las APIs
+  // 77 universal status codes guaranteed across all APIs
   const statuses = [
     [100, "Continue"], [101, "Switching Protocols"], [102, "Processing"], [103, "Early Hints"],
     [200, "OK"], [201, "Created"], [202, "Accepted"], [203, "Non-Authoritative Information"],
@@ -52,7 +51,6 @@ function run(input) {
     [530, "Origin Hostname Resolution Error"], [599, "Network Connect Timeout Error"]
   ];
 
-  // 5. Destructuración de código aleatorio
   const randomIndex = Math.floor(Math.random() * statuses.length);
   const [statusCode, statusTitle] = statuses[randomIndex];
 
