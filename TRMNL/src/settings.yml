@@ -28,7 +28,7 @@ custom_fields:
   field_type: author_bio
   category: programming,humor
   description: Because a 502 Bad Gateway hurts slightly less when it's delivered by a confused duck.
-  github_url: https://github.com/taichikuji/trmnl-http-pets
+  github_url: https://github.com/taichikuji/trmnl-http-pets-plugin
   learn_more_url: https://httpcats.com/
 name: HTTP Pets
 refresh_interval: 15
