@@ -9,7 +9,7 @@ Install it [here](https://trmnl.com/recipes/323180)!
 
 ## Local development
 
-Run the template through the TRMNL's Web UI for testing.
+Run the template through the TRMNL's Web UI for visual testing. Run the transform checks with `bun test`.
 
 ## References
 
