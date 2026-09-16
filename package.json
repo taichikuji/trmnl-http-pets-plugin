@@ -1,8 +1,0 @@
-{
-  "name": "trmnl-http-pets-plugin-checks",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "test": "bun test ./tests/transform.test.mjs"
-  }
-}
