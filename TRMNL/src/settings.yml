@@ -1,4 +1,5 @@
 ---
+description: HTTP status codes with cute pets
 strategy: static
 no_screen_padding: 'no'
 dark_mode: 'no'
@@ -27,8 +28,9 @@ custom_fields:
   name: About This Plugin
   field_type: author_bio
   category: programming,humor
-  description: "Created by Ivan Perez. This plugins displays a cute duck, cat, dog, goat or even a fish when you need it the most."
+  description: "Created by Ivan Perez. This plugin displays a cute duck, cat, dog, goat or even a fish when you need it the most."
   github_url: https://github.com/taichikuji/trmnl-http-pets-plugin
-  learn_more_url: https://httpducks.com/
+  learn_more_url: https://github.com/taichikuji/trmnl-http-pets-plugin/tree/main/TRMNL#setup
+icon: media/icon.svg
 name: HTTP Pets
 refresh_interval: 15
