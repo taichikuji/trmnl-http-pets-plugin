@@ -30,27 +30,21 @@ def photo_region(image, pet):
 def image_tone(photo):
     # Display-referred luma (0..1), rather than a physical illumination measurement.
     grey = photo.convert("L", (0.2126, 0.7152, 0.0722, 0))
-    levels = sorted(grey.tobytes())
     mean = ImageStat.Stat(grey).mean[0] / 255
-    spread = (levels[int(len(levels) * 0.9)] - levels[int(len(levels) * 0.1)]) / 255
     # ponytail: conservative global heuristic; subject-aware exposure needs a different model.
     brightness = 1 if 0.45 <= mean <= 0.60 else max(0.85, min(1.25, 1 + 0.5 * (0.52 - mean) / max(mean, 0.01)))
-    contrast = 1 if 0.45 <= spread <= 0.75 else max(0.95, min(1.05, 1 + 0.5 * (0.60 - spread)))
     histogram = [sum(counts) for counts in zip(*(channel.histogram() for channel in photo.split()))]
 
-    def clipped(b, c):
-        # Same order as the CSS: brightness, then contrast, with channel clamping.
-        return sum(count for x, count in enumerate(histogram) if 0 < x < 255 and (
-                   ((min(255, x * b) / 255 - 0.5) * c + 0.5) >= 1 or
-                   ((min(255, x * b) / 255 - 0.5) * c + 0.5) <= 0))
+    def clipped(b):
+        return sum(count for x, count in enumerate(histogram) if 0 < x < 255 and x * b >= 255)
 
-    # Limit additional fully black/white channel samples to two percentage points.
+    # Limit newly white channel samples to two percentage points. Black stays black.
     budget = 0.02 * sum(histogram)
-    brightness, contrast = round(brightness, 2), round(contrast, 2)
-    while clipped(brightness, contrast) > budget:
-        brightness = round(brightness + (0.01 if brightness < 1 else -0.01 if brightness > 1 else 0), 2)
-        contrast = round(contrast + (0.01 if contrast < 1 else -0.01 if contrast > 1 else 0), 2)
-    return [brightness, contrast]
+    brightness = round(brightness, 2)
+    while clipped(brightness) > budget:
+        brightness = round(brightness - 0.01, 2)
+    # Keep the existing table shape; contrast stays neutral for the photo and frame.
+    return [brightness, 1]
 
 
 def check():
@@ -76,6 +70,7 @@ def check():
     photo = Image.new("RGB", (96, 64), (50, 50, 50))
     photo.paste((245, 245, 245), (0, 0, 24, 64))
     brightness, contrast = image_tone(photo)
+    assert contrast == 1, "Contrast must remain neutral to preserve the black frame"
     newly_clipped = sum(1 for x in photo.tobytes() if 0 < x < 255 and (
         ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) >= 1 or
         ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) <= 0))

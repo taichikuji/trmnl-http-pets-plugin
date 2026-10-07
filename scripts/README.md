@@ -27,8 +27,9 @@ Images are cached in the ignored `tmp/tone-images/` directory; failed measuremen
 use neutral values at runtime.
 
 - `photo_region()` crops out the frame and caption, then samples at 96x64 pixels.
-- `image_tone()` measures mean luma and p90-p10 spread. It limits brightness to
-  0.85-1.25, contrast to 0.95-1.05, and newly clipped sampled RGB channels to 2%.
+- `image_tone()` measures mean luma and adjusts brightness within 0.85-1.25,
+  limiting newly clipped sampled RGB channels to 2%. Contrast stays at `1` so
+  the image's black frame remains black instead of acquiring dither noise.
 - `check()` verifies dark, bright and neutral photos, crops and clipping offline.
 - `main()` reads the sources/codes from the transform, downloads and measures
   images, then prints the generated table for manual copy/paste.
