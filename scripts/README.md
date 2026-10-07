@@ -3,7 +3,14 @@
 `calibrate-images.py` downloads the image catalogue and prints a JavaScript
 brightness/contrast table to copy into `TRMNL/src/transform.js`. It only reads
 that file for the sources and status codes; it never edits it.
-Requires Python 3 and Pillow 9.1+ (`python3 -m pip install Pillow`).
+Use Python 3.14 with Pillow 12+ ([official Python support](https://pillow.readthedocs.io/en/stable/installation/python-support.html)).
+Tested with Python 3.14.7 and Pillow 12.3.0. Install Pillow in a virtual environment:
+
+```sh
+python3.14 -m venv tmp/calibration-venv
+tmp/calibration-venv/bin/python -m pip install "Pillow>=12"
+source tmp/calibration-venv/bin/activate
+```
 
 Run from the repository root:
 
