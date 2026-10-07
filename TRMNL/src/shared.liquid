@@ -1,10 +1,10 @@
 <style>
   .view { background: #000; }
-  .image { filter: brightness(1.15) contrast(1.1); }
+  .pet-image { filter: brightness({{ brightness | default: 1 }}) contrast({{ contrast | default: 1 }}); }
 </style>
 
 <img
-  class="image image-dither image--contain"
+  class="image image-dither image--contain pet-image"
   height="100%"
   width="100%"
   src="{{ image_url }}"
