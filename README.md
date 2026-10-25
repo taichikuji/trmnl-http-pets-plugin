@@ -8,7 +8,7 @@ HTTP status codes, delivered by a random animal on your TRMNL. Because a 502 Bad
 
 ![An animal illustrating an HTTP status code on TRMNL](TRMNL/media/preview_full.webp)
 
-[All layout previews](TRMNL#previews).
+[All layout previews](TRMNL/README.md#previews).
 
 ## Settings
 
@@ -26,7 +26,7 @@ cd TRMNL
 trmnlp serve
 ```
 
-Templates, settings and image selection live in [TRMNL/src/](TRMNL/src/). For setup and image tone calibration, see the [plugin guide](TRMNL#setup) and [script instructions](scripts/README.md).
+Templates, settings and image selection live in [TRMNL/src/](TRMNL/src/). For setup and image tone calibration, see the [plugin guide](TRMNL/README.md#setup) and [script instructions](scripts/README.md).
 
 Images from [HTTP Cats](https://http.cat/), [httpcats.com](https://httpcats.com/), [HTTP Dogs](https://http.dog/), [HTTP Goats](https://httpgoats.com/), [HTTP Ducks](https://httpducks.com/) and [HTTP Fish](https://http.fish/).
 
