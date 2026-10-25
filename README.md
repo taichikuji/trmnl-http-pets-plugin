@@ -6,9 +6,9 @@ HTTP status codes, delivered by a random animal on your TRMNL. Because a 502 Bad
 
 [Install on TRMNL](https://trmnl.com/recipes/323180)
 
-![An animal illustrating an HTTP status code on TRMNL](TRMNL/media/preview_full.webp)
+![HTTP 502 Bad Gateway illustrated by a duck on TRMNL](TRMNL/media/preview_full.webp)
 
-[All layout previews](TRMNL/README.md#previews).
+Demo: HTTP 502 from HTTP Ducks. [All layout previews](TRMNL/README.md#previews).
 
 ## Settings
 

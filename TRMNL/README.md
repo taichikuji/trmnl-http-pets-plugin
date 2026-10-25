@@ -12,6 +12,8 @@ The plugin icon is stored in the TRMNL bundle and referenced from settings.yml.
 
 ## Previews
 
+All four previews render the same HTTP 502 Bad Gateway duck from [HTTP Ducks](https://httpducks.com/), sized for each native layout. The animal and status code vary on refresh.
+
 | Full View | Half Horizontal View |
 |------------|----------------------|
 | ![Full View](media/preview_full.webp) | ![Half Horizontal View](media/preview_half_horizontal.webp) |
