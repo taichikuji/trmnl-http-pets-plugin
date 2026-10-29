@@ -73,7 +73,6 @@ function run(input) {
     image_url: `${activePet.baseUrl}${statusCode}.jpg`,
     code: statusCode,
     title: statusTitle,
-    favicon: `${activePet.baseUrl}favicon.ico`,
     plugin_name: activePet.name
   };
 }
