@@ -23,6 +23,7 @@ python3 scripts/calibrate-images.py --check    # offline self-checks
 Copy the output and replace the entire `BEGIN GENERATED IMAGE TONES` /
 `END GENERATED IMAGE TONES` block in the transform, including its markers.
 The table goes to stdout; warnings and the measurement summary go to stderr.
+Neutral `[1, 1]` entries are omitted; the transform defaults to them at runtime.
 Images are cached in the ignored `tmp/tone-images/` directory; failed measurements
 use neutral values at runtime.
 

@@ -75,7 +75,26 @@ def check():
         ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) >= 1 or
         ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) <= 0))
     assert newly_clipped <= 0.02 * photo.width * photo.height * 3
-    print("Tone checks passed: dark, bright, neutral, frames, unknown layouts, highlight clipping")
+    compact = render_tones({"cats": {"200": [1, 1], "404": [0.9, 1]}})
+    assert '"200"' not in compact and '"404":[0.9,1]' in compact
+    assert compact.startswith(START) and compact.endswith(END)
+    print("Tone checks passed: dark, bright, neutral, frames, unknown layouts, highlight clipping, compact generation")
+
+
+def render_tones(tones):
+    """Keep only non-neutral adjustments; the runtime defaults to [1, 1]."""
+    rows = [
+        f"  {pet}: {json.dumps({code: tone for code, tone in values.items() if tone != [1, 1]}, separators=(',', ':'))}"
+        for pet, values in tones.items()
+    ]
+    return "\n".join([
+        START,
+        "// Entries equal to the default [1, 1] are omitted: the lookup below falls back to [1, 1].",
+        "const IMAGE_TONES = {",
+        ",\n".join(rows),
+        "};",
+        END,
+    ])
 
 
 def main():
@@ -121,8 +140,7 @@ def main():
         for pet, code, tone in pool.map(measure, jobs):
             if tone is not None:
                 tones[pet][str(code)] = tone
-    rows = [f"  {pet}: {json.dumps(values, separators=(',', ':'))}" for pet, values in tones.items()]
-    generated = "\n".join([START, "const IMAGE_TONES = {", ",\n".join(rows), "};", END])
+    generated = render_tones(tones)
     measured = sum(map(len, tones.values()))
     if measured == 0:
         raise SystemExit("No images measured; no table generated")
