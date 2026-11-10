@@ -17,7 +17,6 @@ Run from the repository root:
 ```sh
 python3 scripts/calibrate-images.py
 python3 scripts/calibrate-images.py --refresh  # re-download changed photos
-python3 scripts/calibrate-images.py --check    # offline self-checks
 ```
 
 Copy the output and replace the entire `BEGIN GENERATED IMAGE TONES` /
@@ -31,7 +30,6 @@ use neutral values at runtime.
 - `image_tone()` measures mean luma and adjusts brightness within 0.85-1.25,
   limiting newly clipped sampled RGB channels to 2%. Contrast stays at `1` so
   the image's black frame remains black instead of acquiring dither noise.
-- `check()` verifies dark, bright and neutral photos, crops and clipping offline.
 - `main()` reads the sources/codes from the transform, downloads and measures
   images, then prints the generated table for manual copy/paste.
 

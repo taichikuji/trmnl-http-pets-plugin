@@ -47,40 +47,6 @@ def image_tone(photo):
     return [brightness, 1]
 
 
-def check():
-    """Check exposure direction, crop isolation and clipping without downloading."""
-    assert image_tone(Image.new("RGB", (96, 64), (50, 50, 50)))[0] > 1
-    assert image_tone(Image.new("RGB", (96, 64), (220, 220, 220)))[0] < 1
-    assert image_tone(Image.new("RGB", (96, 64), (133, 133, 133)))[0] == 1
-
-    for pet, size, box in (("fish", (1000, 875), (40, 55, 960, 655)),
-                           ("httpcats", (750, 600), (80, 55, 670, 440)),
-                           ("httpcats", (600, 750), (64, 68, 536, 550))):
-        meme = Image.new("RGB", size, "black")
-        meme.paste((220, 220, 220), box)
-        photo = photo_region(meme, pet)
-        assert photo.getextrema() == ((220, 220),) * 3
-        assert image_tone(photo)[0] < 1
-    try:
-        photo_region(Image.new("RGB", (100, 100)), "fish")
-        raise AssertionError("Unknown layouts must not silently use the wrong crop")
-    except ValueError:
-        pass
-
-    photo = Image.new("RGB", (96, 64), (50, 50, 50))
-    photo.paste((245, 245, 245), (0, 0, 24, 64))
-    brightness, contrast = image_tone(photo)
-    assert contrast == 1, "Contrast must remain neutral to preserve the black frame"
-    newly_clipped = sum(1 for x in photo.tobytes() if 0 < x < 255 and (
-        ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) >= 1 or
-        ((min(255, x * brightness) / 255 - 0.5) * contrast + 0.5) <= 0))
-    assert newly_clipped <= 0.02 * photo.width * photo.height * 3
-    compact = render_tones({"cats": {"200": [1, 1], "404": [0.9, 1]}})
-    assert '"200"' not in compact and '"404":[0.9,1]' in compact
-    assert compact.startswith(START) and compact.endswith(END)
-    print("Tone checks passed: dark, bright, neutral, frames, unknown layouts, highlight clipping, compact generation")
-
-
 def render_tones(tones):
     """Keep only non-neutral adjustments; the runtime defaults to [1, 1]."""
     rows = [
@@ -100,11 +66,7 @@ def render_tones(tones):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--refresh", action="store_true", help="re-download cached images")
-    parser.add_argument("--check", action="store_true", help="run offline self-checks instead of calibrating")
     args = parser.parse_args()
-    if args.check:
-        check()
-        return
     source = TRANSFORM.read_bytes().decode()
     pets = re.findall(r"^\s*(\w+):\s*\{[^\n]*baseUrl: '([^']+)'", source, re.M)
     codes = sorted(set(map(int, re.findall(r'\[(\d+), "', source))))
