@@ -27,7 +27,7 @@ custom_fields:
 - keyname: plugin_info
   name: About This Plugin
   field_type: author_bio
-  category: programming,humor,images
+  category: programming,humor
   description: "Created by Ivan Perez. This plugin displays a cute duck, cat, dog, goat or even a fish when you need it the most."
   github_url: https://github.com/taichikuji/trmnl-http-pets-plugin
   learn_more_url: https://github.com/taichikuji/trmnl-http-pets-plugin/tree/main/TRMNL#setup
