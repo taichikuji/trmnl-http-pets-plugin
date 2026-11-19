@@ -1,5 +1,5 @@
 ---
-description: HTTP status codes with cute pets
+description: HTTP status codes with random pets
 strategy: static
 no_screen_padding: 'no'
 dark_mode: 'no'
@@ -28,7 +28,15 @@ custom_fields:
   name: About This Plugin
   field_type: author_bio
   category: programming,humor
-  description: "Created by Ivan Perez. This plugin displays a cute duck, cat, dog, goat or even a fish when you need it the most."
+  description: >-
+    Turn HTTP status codes into a small surprise on your TRMNL. HTTP Pets pairs a randomly
+    selected status code with an animal image, making familiar messages such as 200 OK, 404
+    Not Found or 502 Bad Gateway a little more fun to see. Pick cats, dogs, ducks, goats or
+    fish, or choose All to mix the available animal sources. Images come from HTTP Cats,
+    httpcats.com, HTTP Dogs, HTTP Goats, HTTP Ducks and HTTP Fish. The plugin chooses a new
+    image on refresh, approximately every 15 minutes, and supports all four TRMNL layout
+    sizes. No account, login or API key is required. A playful desk display for developers,
+    people learning HTTP and anyone who likes animals. Created by Ivan Perez.
   github_url: https://github.com/taichikuji/trmnl-http-pets-plugin
   learn_more_url: https://github.com/taichikuji/trmnl-http-pets-plugin/tree/main/TRMNL#setup
 icon: media/icon.svg
