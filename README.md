@@ -15,7 +15,7 @@ Demo: HTTP 502 from HTTP Ducks. [All layout previews](TRMNL/README.md#previews).
 - **Choose your HTTP Pet:** `all`, `cats`, `httpcats`, `dogs`, `goats`, `ducks` or `fish` (defaults to `all`).
 - No account or API key needed.
 
-A new random image every 15 minutes, with full, half horizontal, half vertical and quadrant layouts. Force Refresh for another pet.
+A new random image every 2 hours, with full, half horizontal, half vertical and quadrant layouts. Force Refresh for another pet.
 
 ## Develop locally
 

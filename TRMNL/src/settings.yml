@@ -34,7 +34,7 @@ custom_fields:
     Not Found or 502 Bad Gateway a little more fun to see. <br/><br/> Pick cats, dogs, ducks,
     goats or fish, or choose All to mix the available animal sources. Images come from HTTP
     Cats, httpcats.com, HTTP Dogs, HTTP Goats, HTTP Ducks and HTTP Fish. <br/><br/> The plugin
-    chooses a new image on refresh, approximately every 15 minutes, and supports all four
+    chooses a new image on refresh, approximately every 2 hours, and supports all four
     TRMNL layout sizes. <br/><br/> No account, login or API key is required. A playful desk
     display for developers, people learning HTTP and anyone who likes animals. Created by Ivan
     Perez.
@@ -42,4 +42,4 @@ custom_fields:
   learn_more_url: https://github.com/taichikuji/trmnl-http-pets-plugin/tree/main/TRMNL#setup
 icon: media/icon.svg
 name: HTTP Pets
-refresh_interval: 15
+refresh_interval: 120
